@@ -1,3 +1,7 @@
+/WebService-IPStack-*
+/.prove
+*.swp
+
 !Build/
 .last_cover_stats
 /META.yml
