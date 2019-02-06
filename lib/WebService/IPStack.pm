@@ -49,7 +49,7 @@ sub bulk_lookup {
     confess "Expect an array of IP address" if (ref $ips ne 'ARRAY');
 
     if (!$self->is_pro || !$self->is_pro_plus) {
-        confess "Bulk IP lookup only for Business or Business Pro subscription plan"
+        confess "Bulk IP lookup only for Professional or Professional Plus subscription plan"
     }
 
     my $endpoint = join(",", $ips);
@@ -66,7 +66,7 @@ sub _request {
     my ($self, $endpoint, $params) = @_;
 
     if (exists($params->{security}) && !$self->is_business_pro) {
-        confess "Security data only for Business Pro subscription plan"
+        confess "Security data only for Professional Plus subscription plan"
     }
 
     my $format = exists($params->{output}) ? $params->{output} : 'json';
@@ -92,13 +92,14 @@ __END__
 
 =head1 NAME
 
-WebService::IPStack - Perl library for using IPStack, https://ipstack.com.
+WebService::IPStack - Perl library for IPStack's Geolocation API,
+https://ipstack.com.
 
 =head1 SYNOPSIS
 
   use WebService::IPStack;
 
-  my $ipstack = WebService::IPStack->new(api_key => 'foobar');
+  my $ipstack = WebService::IPStack->new(api_key => '1xxxxxxxxxxxxxxxxxxxxxxxxxxxxx32');
   $ipstack->query('8.8.8.8');
 
   # Only for Pro plan.
@@ -128,17 +129,19 @@ Compulsory. The API access key used to make request through web service.
 =head3 api_plan
 
 Optional. The API subscription plan used when accessing the API. There are four
-subscription plans: free, standard, pro, and pro_plus. By default, the
-subscription plan is 'free'. The main difference between free and non-free
-subscription plans are HTTPS encryption protocol support and additional
-information.
+subscription plans: free, standard, pro, and pro_plus. The default subscription
+plan is 'free'. The main difference between free and non-free subscription
+plans are HTTPS encryption protocol support and additional information.
 
     # The API request URL is http://api.ipstack.com/
     my $ipstack = WebService::IPStack->new(api_key => '1xxxxxxxxxxxxxxxxxxxxxxxxxxxxx32');
     print $ipstack->api_url;
 
     # The API request URL is https://api.ipstack.com/
-    my $ipstack = WebService::IPStack->new(api_key => '1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx32', api_plan => 'paid');
+    my $ipstack = WebService::IPStack->new(
+        api_key => '1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx32',
+        api_plan => 'standard'
+    );
     print $ipstack->api_url;
 
 =head3 api_url
@@ -158,10 +161,14 @@ to adjust the output.
 
 =head2 bulk_lookup($ip_address, [%params])
 
-Only for Paid subscription plan. Query and get multiple IP addresses
-information. Optionally you can add more settings to adjust the output.
+Only for paid subscription plans (standard, pro, or pro_plus).  Query and get
+multiple IP addresses information. Optionally you can add more settings to
+adjust the output.
 
-    my $ipstack = WebService::IPStack->new(api_key => '1xxxxxxxxxxxxxxxxxxxxxxxxxxxxx32', api_plan => 'paid');
+    my $ipstack = WebService::IPStack->new(
+        api_key => '1xxxxxxxxxxxxxxxxxxxxxxxxxxxxx32',
+        api_plan => 'standard'
+    );
     $ipstack->query(['8.8.8.8', '8.8.4.4']);
 
     # With optional parameters.
