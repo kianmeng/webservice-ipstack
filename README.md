@@ -15,15 +15,12 @@ https://ipstack.com.
     use WebService::IPStack;
 
     my $ipstack = WebService::IPStack->new(api_key => '1xxxxxxxxxxxxxxxxxxxxxxxxxxxxx32');
-    $ipstack->query('8.8.8.8');
-
-    # Only for Pro plan.
-    $ipstack->query(['8.8.8.8', '8.8.4.4']);
+    $ipstack->lookup('8.8.8.8');
 
 # DESCRIPTION
 
-WebService::IPStack is a Perl library for obtaining information on IPv4 or IPv6
-address.
+WebService::IPStack is a Perl library for obtaining Geolocation information on
+IPv4 or IPv6 address.
 
 # DEVELOPMENT
 
@@ -69,10 +66,10 @@ Query and get an IP address information. Optionally you can add more settings
 to adjust the output.
 
     my $ipstack = WebService::IPStack->new(api_key => '1xxxxxxxxxxxxxxxxxxxxxxxxxxxxx32');
-    $ipstack->query('8.8.8.8');
+    $ipstack->lookup('8.8.8.8');
 
     # With optional parameters.
-    $ipstack->query('8.8.8.8', {hostname => 1, security => 1, output => 'xml'});
+    $ipstack->lookup('8.8.8.8', {hostname => 1, security => 1, output => 'xml'});
 
 ## bulk\_lookup($ip\_address, \[%params\])
 
@@ -84,10 +81,10 @@ adjust the output.
         api_key => '1xxxxxxxxxxxxxxxxxxxxxxxxxxxxx32',
         api_plan => 'standard'
     );
-    $ipstack->query(['8.8.8.8', '8.8.4.4']);
+    $ipstack->bulk_lookup(['8.8.8.8', '8.8.4.4']);
 
     # With optional parameters.
-    $ipstack->query(['8.8.8.8', '8.8.4.4'], {language => 'zh'});
+    $ipstack->bulk_lookup(['8.8.8.8', '8.8.4.4'], {language => 'zh'});
 
 ## check(\[%params\])
 
