@@ -184,7 +184,7 @@ Optionally you can add more settings to adjust the output.
 
 =head1 AUTHOR
 
-Kian Meng, Ang E<lt>kianmeng@users.noreply.github.comE<gt>
+Kian Meng, Ang E<lt>kianmeng@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 

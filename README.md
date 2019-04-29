@@ -95,7 +95,7 @@ Optionally you can add more settings to adjust the output.
 
 # AUTHOR
 
-Kian Meng, Ang <kianmeng@users.noreply.github.com>
+Kian Meng, Ang <kianmeng@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
