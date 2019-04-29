@@ -1,7 +1,3 @@
-[![Build Status](https://travis-ci.org/kianmeng/webservice-ipstack.svg?branch=master)](https://travis-ci.org/kianmeng/webservice-ipstack)
-[![codecov](https://codecov.io/gh/kianmeng/webservice-ipstack/branch/master/graph/badge.svg)](https://codecov.io/gh/kianmeng/webservice-ipstack)
-[![Coverage Status](https://coveralls.io/repos/kianmeng/webservice-ipstack/badge.svg?branch=master)](https://coveralls.io/r/kianmeng/webservice-ipstack?branch=master)
-[![Kwalitee status](http://cpants.cpanauthors.org/dist/WebService-IPStack.png)](http://cpants.charsbar.org/dist/overview/WebService-IPStack)
 [![Cpan license](https://img.shields.io/cpan/l/WebService-IPStack.svg)](https://metacpan.org/release/WebService-IPStack)
 [![Cpan version](https://img.shields.io/cpan/v/WebService-IPStack.svg)](https://metacpan.org/release/WebService-IPStack)
 
@@ -97,6 +93,10 @@ Optionally you can add more settings to adjust the output.
     # With optional parameters.
     $ipstack->check({hostname => 1, security => 1, output => xml});
 
+# AUTHOR
+
+Kian Meng, Ang <kianmeng@users.noreply.github.com>
+
 # COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2019 Kian Meng, Ang.
@@ -104,7 +104,3 @@ This software is Copyright (c) 2019 Kian Meng, Ang.
 This is free software, licensed under:
 
     The Artistic License 2.0 (GPL Compatible)
-
-# AUTHOR
-
-Kian Meng, Ang <kianmeng@users.noreply.github.com>
