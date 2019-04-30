@@ -32,7 +32,7 @@ has api_url => (
     is => 'ro',
     default => sub {
         my $protocol = (shift->is_free) ? 'http' : 'https';
-        return qq|$protocol://api.ipstack.com/|
+        return qq|$protocol://api.ipstack.com/|;
     },
 );
 
@@ -70,13 +70,12 @@ sub _request {
 
     my $format = exists($params->{output}) ? $params->{output} : 'json';
 
-    $self->set_persistent_header('User-Agent' => __PACKAGE__ . $WebService::IPStack::VERSION);
+    $self->set_persistent_header(
+        'User-Agent' => __PACKAGE__ . $WebService::IPStack::VERSION);
     $self->server($self->api_url);
     $self->type(qq|application/$format|);
 
-    my $queries = {
-        access_key => $self->api_key
-    };
+    my $queries = {access_key => $self->api_key};
     $queries = {%{$queries}, %{$params}} if (defined $params);
 
     my $response = $self->get($endpoint, $queries);
@@ -88,6 +87,8 @@ sub _request {
 __END__
 
 =encoding utf-8
+
+=for stopwords ipstack geolocation hostname
 
 =head1 NAME
 
@@ -108,7 +109,7 @@ IPv4 or IPv6 address.
 
 =head1 DEVELOPMENT
 
-Source repo at L<https://github.com/kianmeng/webservice-ipstack|https://github.com/kianmeng/webservice-ipstack>.
+Source repository at L<https://github.com/kianmeng/webservice-ipstack|https://github.com/kianmeng/webservice-ipstack>.
 
 How to contribute? Follow through the L<CONTRIBUTING.md|https://github.com/kianmeng/webservice-ipstack/blob/master/CONTRIBUTING.md> document to setup your development environment.
 

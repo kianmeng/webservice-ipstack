@@ -17,7 +17,7 @@ my $got;
 my $ipstack = WebService::IPStack->new(api_key => $ENV{IPSTACK_ACCESS_KEY});
 
 $got = $ipstack->lookup('8.8.8.8');
-is($got->{country_code}, "US", 'expect country code match');
+is($got->{country_code}, 'US', 'expect country code match');
 
 dies_ok {
     $got = $ipstack->lookup('8.8.8.8', {security => 1});
