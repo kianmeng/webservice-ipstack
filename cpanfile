@@ -7,7 +7,8 @@ requires 'Moo';
 requires 'MooX::Enumeration';
 requires 'REST::Client';
 requires 'Role::REST::Client';
-requires 'Types::Standard';
+requires 'Types::Common::String', '1.004002';
+requires 'Types::Standard', '1.004002';
 
 on test => sub {
     requires 'Pod::Coverage::TrustPod';

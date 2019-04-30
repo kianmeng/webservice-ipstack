@@ -7,6 +7,7 @@ use utf8;
 use Carp qw(confess);
 use Moo;
 use MooX::Enumeration;
+use Types::Common::String qw(StrLength);
 use Types::Standard qw(Str Enum);
 
 with 'Role::REST::Client';
@@ -14,9 +15,7 @@ with 'Role::REST::Client';
 our $VERSION = '0.01';
 
 has api_key => (
-    isa => sub {
-        confess 'API key must be length of 32 characters!' if (length $_[0] != 32);
-    },
+    isa => StrLength[32],
     is => 'rw',
     required => 1,
 );
